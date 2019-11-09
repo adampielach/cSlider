@@ -1,26 +1,20 @@
-import axios from 'axios';
-
-window.addEventListener('load', () => {
-
-  const api = 'http://www.colr.org/json/color/random';
-  const body = document.querySelector('body');
-
-  function randomColor() {
-    axios.get(api).then(res => {
-      let color = res.data.colors[0].hex;
-
-      if (!color) {
-        console.error('Random color could not be fetched.');
-      }
-
-      color = '#' + color;
-
-      body.style.backgroundColor = color;
-    }).catch(() => console.error('Random color could not be fetched.'));
+class cSlider {
+  constructor(settings) {
+    this.settings = cSlider.mergeSettings(settings);
   }
 
-  randomColor();
+  // default settings
 
-  setInterval(randomColor, 8000);
-
-});
+  mergeSettings = function(userSettings) {
+    let settings = {
+      selector: '.cSlider',
+      duration: 200,
+      easing: 'ease-out',
+      perPage: 1,
+      startIndex: 0,
+      loop: false,
+      onInit: () => {},
+      onChange: () => {}
+    }
+  }
+}

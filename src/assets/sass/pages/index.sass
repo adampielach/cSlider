@@ -25,3 +25,21 @@ body
   width: 500px
   margin-top: 3%
   box-shadow: 1px 0 10px rgba(0,0,0,0.3)
+
+
+$colors: #56c7fa, #f76540, #ffcb05, #62cd9f, #b67baa;
+$colorsLength: length($colors)
+
+.cSlider
+  position: relative
+  width: 90%
+  height: 100%
+  .c-slide
+    height: 100%
+    color: black
+    display: flex
+    justify-content: center
+    align-items: center
+    @for $i from 1 through $colorsLength
+      &:nth-of-type(#{$colorsLength}n + #{$i})
+        background-color: nth($colors, $i)
